@@ -1,0 +1,130 @@
+/*==================================
+Font Variable
+==================================*/
+
+:root {
+    --uc-primary-font: 'Urbanist', sans-serif;
+}
+
+:root {
+    --uc-secondary-font: 'Arial', sans-serif;
+}
+
+:root {
+    --uc-text-font: 'Roboto', sans-serif;;
+}
+
+:root {
+    --uc-accent-font: 'Urbanist', sans-serif;
+}
+
+:root {
+    --uc-general-font: 'Roboto', sans-serif;;
+}
+
+
+
+/*==================================
+Theme Color All Codes Variable
+==================================*/
+
+:root {
+    --uc-primary-color: #aa8453;
+    /* theme primary color */
+}
+
+:root {
+    --uc-secondary-color: #313145;
+    /* theme secondary color */
+}
+
+:root {
+    --uc-white-color: #fff;
+    /* theme white font color */
+}
+
+:root {
+    --uc-light-color: #f5f5f5;
+    /* theme light gray color */
+}
+
+:root {
+    --uc-light-gray-color: #f8f8f8;
+    /* theme gray color */
+}
+
+:root {
+    --uc-gray-color: #c0c0c0;
+    /* theme gray color */
+}
+
+:root {
+    --uc-dark-color: #12171f;
+    /* theme dark color ok*/
+}
+
+:root {
+    --uc-accent-color: #aa8453;
+    /* theme accent color ok*/
+}
+
+:root {
+    --uc-footer-color: #12171f;
+    /* theme dark color ok*/
+}
+
+:root {
+    --uc-primary-opacity-color: rgba(170, 132, 83, .8);
+    /* theme secondary color */
+}
+
+:root {
+    --uc-secondary-opacity-color: rgba(49, 49, 69, .8);
+    /* theme secondary color */
+}
+
+:root {
+    --uc-dark-opacity-color: rgba(24, 26, 29, .8);
+    /* theme dark opacity color */
+}
+
+:root {
+    --uc-white-opacity-color: rgba(255, 255, 255, 0.5);
+    /* theme light color */
+}
+
+:root {
+    --uc-default-color: #787878;
+    /* theme gray color */
+}
+
+:root {
+    --uc-text-gray-color: #b1b1b1;
+    /* theme gray color */
+}
+
+:root {
+    --uc-text-color2: #9b9b9b;
+    /* text light color */
+}
+
+:root {
+    --uc-text-color3: #c3c3c3;
+    /* theme text gray color */
+}
+
+:root {
+    --uc-text-color4: #ededed;
+}
+
+:root {
+    --uc-primary-color-rgba: 170, 132, 83;
+}
+
+:root {
+    --uc-secondary-color-rgba: 49, 49, 69;
+}
+
+:root {
+    --uc-dark-color-rgba: 24, 26, 29;
+}

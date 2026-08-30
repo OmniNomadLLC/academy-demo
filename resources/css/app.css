@@ -1,0 +1,150 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../../app/**/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+/* Gate the `dark:` variant on Filament's theme attribute so dark utilities
+   never fire from the OS `prefers-color-scheme` on a light panel. */
+@custom-variant dark ([data-theme="dark"] &);
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+[data-theme="dark"] .fi-section-content,
+[data-theme="dark"] .fi-section,
+[data-theme="dark"] .fi-card,
+[data-theme="dark"] .fi-panel,
+[data-theme="dark"] .fi-infolists-section-content,
+[data-theme="dark"] .fi-infolists-entry-wrp,
+[data-theme="dark"] .fi-infolists-component-view-record-grid > .fi-infolists-grid > .fi-infolists-entry,
+[data-theme="dark"] .fi-infolists-entry {
+    background-color: #111014;
+    border-color: #3f3f46;
+    color: #e5e7eb;
+}
+
+[data-theme="dark"] .fi-card-header,
+[data-theme="dark"] .fi-section-header,
+[data-theme="dark"] .fi-table thead,
+[data-theme="dark"] .fi-infolists-section-header {
+    background-color: #14131a;
+    color: #f4f4f5;
+}
+
+[data-theme="dark"] .fi-input,
+[data-theme="dark"] .fi-select,
+[data-theme="dark"] .fi-textarea,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select,
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] input[type="email"],
+[data-theme="dark"] input[type="tel"],
+[data-theme="dark"] input[type="number"] {
+    background-color: #0f0f14;
+    color: #e5e7eb;
+    border-color: #3f3f46;
+}
+
+[data-theme="dark"] .fi-input::placeholder,
+[data-theme="dark"] .fi-select::placeholder,
+[data-theme="dark"] .fi-textarea::placeholder,
+[data-theme="dark"] textarea::placeholder,
+[data-theme="dark"] input::placeholder {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .fi-table tbody tr {
+    background-color: #111014;
+    border-color: #27272a;
+}
+
+[data-theme="dark"] .fi-table tbody tr:nth-child(2n) {
+    background-color: #17171d;
+}
+
+[data-theme="dark"] .fi-badge,
+[data-theme="dark"] .fi-badge::before {
+    color: inherit;
+}
+
+[data-theme] .fi-main table {
+    width: 100%;
+}
+
+[data-theme] .fi-main .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 640px) {
+    .fi-dashboard-page .fi-wi-stats-overview-stats-ctn {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 0.75rem !important;
+    }
+
+    .fi-dashboard-page .fi-wi-stats-overview-stat {
+        padding: 1rem;
+    }
+
+    .fi-dashboard-page .fi-wi-stats-overview-stat-label {
+        font-size: 0.75rem;
+    }
+
+    .fi-dashboard-page .fi-wi-stats-overview-stat-value {
+        font-size: 1.5rem;
+    }
+}
+
+.portal-stat {
+    border: none !important;
+    color: #0f172a !important;
+}
+
+.portal-stat .fi-wi-stats-overview-stat-label,
+.portal-stat .fi-wi-stats-overview-stat-value {
+    color: #0f172a !important;
+}
+
+.portal-stat-classes {
+    background: linear-gradient(135deg, #ecfccb, #c7f9cc) !important;
+}
+
+.portal-stat-students {
+    background: linear-gradient(135deg, #e0f2fe, #bae6fd) !important;
+}
+
+.portal-stat-week {
+    background: linear-gradient(135deg, #fef3c7, #fde68a) !important;
+}
+
+@media (max-width: 1200px) {
+    body.filament-portal .fi-dashboard-page .fi-wi-table .fi-ta-header-ctn .fi-ta-actions {
+        display: none !important;
+    }
+}
+
+@media (max-width: 1200px) {
+    body.filament-portal .fi-dashboard-page .fi-wi-table .fi-ta-header-actions {
+        display: none !important;
+    }
+}
+
+@media (max-width: 1200px) {
+    body.filament-portal .fi-dashboard-page .fi-wi {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+
+    body.filament-portal .fi-dashboard-page .fi-wi > :first-child {
+        order: 1;
+    }
+
+    body.filament-portal .fi-dashboard-page .fi-wi > :nth-child(2) {
+        order: 0;
+    }
+}

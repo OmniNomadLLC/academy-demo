@@ -1,0 +1,88 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+use App\Http\Controllers\AcuityWebhookController;
+use App\Http\Controllers\ExportUpcomingController;
+use App\Http\Controllers\StudentsAuditExportController;
+use App\Http\Controllers\Regions\RegionStudentsController;
+use App\Http\Middleware\VerifyCsrfToken;
+
+// Root
+Route::get('/', function () {
+    return view('welcome');
+});
+
+// Acuity webhook endpoint (CSRF-exempt)
+Route::post('/webhooks/acuity', [AcuityWebhookController::class, 'handle'])
+    ->withoutMiddleware(VerifyCsrfToken::class);
+
+// Health check for ngrok/Acuity
+Route::get('/webhooks/acuity/health', fn () => response('ok', 200));
+
+// Optional debug (local only)
+Route::get('/webhooks/acuity/debug', function () {
+    abort_unless(app()->isLocal(), 404);
+
+    return response()->json([
+        'env'         => app()->environment(),
+        'queue'       => config('queue.default'),
+        'connection'  => config('queue.connections.' . config('queue.default') . '.driver'),
+        'log_channel' => config('logging.default'),
+    ]);
+});
+
+// Admin exports: upcoming classes CSV
+Route::middleware(['web', 'auth'])->group(function () {
+    Route::get('/admin/exports/upcoming', [ExportUpcomingController::class, 'upcoming'])
+        ->name('exports.upcoming');
+
+    Route::get(
+        '/admin/exports/students-audit/latest',
+        [StudentsAuditExportController::class, 'latestZip']
+    )->name('exports.students_audit.latest');
+});
+
+// Regional Students routes
+Route::prefix('regions')->group(function () {
+    Route::get('/uk/students',     [RegionStudentsController::class, 'uk'])->name('regions.uk.students');
+    Route::get('/spain/students',  [RegionStudentsController::class, 'spain'])->name('regions.spain.students');
+    Route::get('/france/students', [RegionStudentsController::class, 'france'])->name('regions.france.students');
+});
+
+/*
+|--------------------------------------------------------------------------
+| TEMP: Fallback POST /admin/login for staging
+| If Filament’s POST isn’t registered, this ensures you can log in.
+| Remove once php artisan route:list shows a POST for /admin/login.
+|--------------------------------------------------------------------------
+*/
+if (app()->environment('staging')) {
+    Route::post('/admin/login', function (Request $request) {
+        $data = $request->validate([
+            'email'    => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (! Auth::attempt(
+            ['email' => $data['email'], 'password' => $data['password']],
+            $request->boolean('remember')
+        )) {
+            return back()
+                ->withErrors(['email' => 'Credentials not recognized.'])
+                ->withInput();
+        }
+
+        $request->session()->regenerate();
+
+        // Filament panel lives under /admin
+        return redirect()->intended('/admin');
+    })
+    ->middleware('web')   
+    ->name('admin.login.fallback')
+    ->withoutMiddleware(VerifyCsrfToken::class)   // <— bypass CSRF for this staging-only route
+    ->withoutMiddleware(EncryptCookies::class);
+}
+

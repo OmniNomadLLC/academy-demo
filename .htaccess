@@ -1,0 +1,19 @@
+# Defensive guard: this Laravel app sits inside the XAMPP DocumentRoot
+# (/Applications/XAMPP/xamppfiles/htdocs), so everything here is web-reachable
+# whenever Apache runs. Only public/ is ever meant to be served.
+#
+# Added 2026-08-28 during decommissioning after production SQL dumps and CSV
+# exports containing personal data were found sitting in this directory.
+
+# No directory listings (httpd.conf enables Options Indexes for htdocs).
+Options -Indexes
+
+# Block dotfiles (.env, .env.backup, .git, ...) in this directory and below.
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# Block database dumps, archives and logs regardless of location.
+<FilesMatch "\.(sql|sql\.gz|gz|zip|tar|dump|log|bak|backup)$">
+    Require all denied
+</FilesMatch>

@@ -1,0 +1,103 @@
+/*==================================
+Theme Color All Codes Variable
+==================================*/
+
+:root {
+    --uc-general-color: #6d7175;
+    /* theme gray color */
+}
+
+:root {
+    --uc-primary-color: #dbe61d;
+    /* theme primary color */
+}
+
+:root {
+    --uc-secondary-color: #3e5083;
+    /* theme secondary color */
+}
+
+:root {
+    --uc-white-color: #fff;
+    /* theme white font color */
+}
+
+:root {
+    --uc-light-color: #f2f4d8;
+    /* theme light gray color */
+}
+
+:root {
+    --uc-gray-color: #e1e1e1;
+    /* theme gray color */
+}
+
+:root {
+    --uc-dark-color: #12171f;
+    /* theme dark color ok*/
+}
+
+:root {
+    --uc-extra-color: #1d2a40;
+    /* theme extra color */
+}
+
+:root {
+    --uc-footer-color: #12171f;
+    /* theme dark color ok*/
+}
+
+:root {
+    --uc-primary-opacity-color: rgba(219, 230, 29, .8);
+    /* theme secondary color */
+}
+
+:root {
+    --uc-secondary-opacity-color: rgba(62, 80, 131, .8);
+    /* theme secondary color */
+}
+
+:root {
+    --uc-dark-opacity-color: rgba(24, 26, 29, .8);
+    /* theme dark opacity color */
+}
+
+:root {
+    --uc-white-opacity-color: rgba(255, 255, 255, 0.5);
+    /* theme light color */
+}
+
+:root {
+    --uc-text-light-color: #8a99b3;
+    /* text light color */
+}
+
+:root {
+    --uc-text-gray-color: #c3c3c3;
+    /* theme text gray color */
+}
+
+:root {
+    --uc-primary-color-rgba: 83, 177, 65;
+    /* theme secondary color */
+}
+
+
+/*==================================
+Font Variable
+==================================*/
+
+:root {
+    --uc-general-font: 'Barlow', sans-serif;;
+    /* Font use for normal text and general text */
+}
+
+:root {
+    --uc-hiperlink-font: 'Sen', sans-serif;
+    /* Font use for normal text and general text */
+}
+
+:root {
+    --uc-highlight-font: 'Sen', sans-serif;
+    /* Font used in title or special area */
+}
